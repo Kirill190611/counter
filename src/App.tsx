@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import {Counter} from "./components/Counter";
+
+const MAX_VALUE = 5;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [value, setValue] = useState(0);
+
+    const clickHandler = () => {
+        if (value >= MAX_VALUE) {
+            return
+        }
+        setValue(value + 1);
+    }
+
+    const resetHandler = () => {
+        setValue(0)
+    }
+
+    return (
+        <div className="app-wrapper">
+            <Counter value={value}
+                     clickHandler={clickHandler}
+                     resetHandler={resetHandler}/>
+        </div>
+    );
 }
 
 export default App;
