@@ -2,11 +2,12 @@ import React, {useState} from 'react';
 import './App.css';
 import {Counter} from "./components/Counter";
 
-const MAX_VALUE = 5;
+export const MAX_VALUE = 5;
+export const INIT_VALUE = 0;
 
 function App() {
 
-    const [value, setValue] = useState(0);
+    const [value, setValue] = useState(INIT_VALUE);
 
     const clickHandler = () => {
         if (value >= MAX_VALUE) {
@@ -16,7 +17,7 @@ function App() {
     }
 
     const resetHandler = () => {
-        setValue(0)
+        setValue(INIT_VALUE)
     }
 
     return (
