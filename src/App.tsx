@@ -1,32 +1,48 @@
 import React, {useState} from 'react';
 import './App.css';
 import {Counter} from "./components/Counter";
+import {CounterSettings} from "./components/CounterSettings";
 
 
 function App() {
-    const maxValue = 5;
-    const initValue = 0;
+    const [maxValue, setMaxValue] = useState(0)
+    const [startValue, setStartValue] = useState(0);
 
-    const [value, setValue] = useState(initValue);
+    const MAX = maxValue;
+    const INIT = startValue;
+
+    const [value, setValue] = useState(INIT);
 
     const clickHandler = () => {
-        if (value >= maxValue) {
+        if (value >= MAX) {
             return
         }
         setValue(value + 1);
     }
 
     const resetHandler = () => {
-        setValue(initValue)
+        setValue(INIT)
+    }
+
+    const onClickSetMaxValue = () => {
+        setMaxValue(maxValue + 1);
+    }
+
+    const onClickSetStartValue = () => {
+        setStartValue(startValue + 1)
     }
 
     return (
         <div className="app-wrapper">
+            <CounterSettings onClickSetMaxValue={onClickSetMaxValue}
+                             maxValue={maxValue}
+                             onClickSetStartValue={onClickSetStartValue}
+                             startValue={startValue}/>
             <Counter value={value}
                      clickHandler={clickHandler}
                      resetHandler={resetHandler}
-                     maxValue={maxValue}
-                     initValue={initValue}/>
+                     maxValue={MAX}
+                     initValue={INIT}/>
         </div>
     );
 }

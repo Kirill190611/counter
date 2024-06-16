@@ -1,7 +1,7 @@
 import React from 'react';
 
 type ButtonProps = {
-    className: string
+    className?: string
     onClick?: () => void
     title: string
 }
